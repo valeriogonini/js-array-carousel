@@ -13,22 +13,60 @@ const arreyImg = [
     "img/03.webp",
     "img/04.webp",
     "img/05.webp",
-]  
+]
 
 
 const nameItemContainer = document.querySelector(".item-container")
+let itemsHTMLDome = ""
+for (let i = 0; i < arreyImg.length; i++) {
+    const imgSlide = arreyImg[i]
 
-for (let i = 0; i < arreyImg.length; i++){
-const imgSlide = arreyImg[i]
-
-const slideHTMLimg = `
+    const slideHTMLimg = `
 <div class="img-item">
     <img src="${imgSlide}">
 </div>
 
 `;
-console.log(slideHTMLimg);
+    itemsHTMLDome += slideHTMLimg
+
+
+    //console.log(slideHTMLimg);
 
 
 }
+nameItemContainer.innerHTML = itemsHTMLDome;
+
+const itemsContainerImg = document.getElementsByClassName("img-item")
+
+let activeHTMLitem = 0;
+//const primoItem = itemsContainerImg[activeHTMLitem]
+itemsContainerImg[activeHTMLitem].classList.add("active")
+
+
+const rightArrow = document.querySelector(".right")
+const leftArrow = document.querySelector(".left")
+
+
+
+rightArrow.addEventListener("click", function () {
+    itemsContainerImg[activeHTMLitem].classList.remove("active")
+
+    activeHTMLitem++
+
+    itemsContainerImg[activeHTMLitem].classList.add("active")
+
+})
+leftArrow.addEventListener("click", function () {
+    itemsContainerImg[activeHTMLitem].classList.remove("active")
+
+    activeHTMLitem--
+
+    itemsContainerImg[activeHTMLitem].classList.add("active")
+
+})
+
+
+
+
+
 
